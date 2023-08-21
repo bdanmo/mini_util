@@ -31,7 +31,7 @@ case $choice in
 3) clear;exit 0 ;;
 *) echo "Invalid choice" ;;
 esac
-echo -n "Press Enter to cmake another selection"
+echo -n "Press Enter to make another selection"
 read junk
 done
 
