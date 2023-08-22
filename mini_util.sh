@@ -20,18 +20,23 @@ echo "1 - Show IP Information"
 echo
 echo "2 - Show currently logged in user"
 echo
-echo "3 - Quit"
+echo "3 - Show disk usage"
 echo
-echo -n "Enter your choice: "
+echo "4 - Quit"
+echo
+echo "Enter your choice: "
 echo
 read choice
+echo
 case $choice in
 1) show_ipinfo ;;
 2) whoami ;;
-3) clear;exit 0 ;;
+3) df -h | grep -v tmpfs ;;
+4) clear;exit 0 ;;
 *) echo "Invalid choice" ;;
 esac
-echo -n "Press Enter to make another selection"
+echo
+echo "Press Enter to make another selection"
 read junk
 done
 
