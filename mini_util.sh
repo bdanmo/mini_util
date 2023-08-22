@@ -17,13 +17,13 @@ echo "UTILITY MENU"
 echo "------------"
 echo
 echo "1 - IP Information"
+echo 
+echo "2 - Disk usage"
 echo
-echo "2 - Currently logged in user"
+echo "3 - tmpfs usage"
 echo
-echo "3 - Disk usage"
-echo
-echo "4 - tmpfs usage"
-echo
+echo "4 - Currently logged in user"
+echo 
 echo "5 - Quit"
 echo
 echo "Enter your choice: "
@@ -32,9 +32,9 @@ read choice
 echo
 case $choice in
 1) show_ipinfo ;;
-2) whoami ;;
-3) df -h | grep -v tmpfs  ;;
-4) df -h | grep tmpfs ;;
+2) df -h | grep -v tmpfs  ;;
+3) df -h | grep tmpfs ;;
+4) whoami ;;
 5) clear;exit 0 ;;
 *) echo "Invalid choice" ;;
 esac
