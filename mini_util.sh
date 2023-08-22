@@ -31,7 +31,7 @@ echo
 case $choice in
 1) show_ipinfo ;;
 2) whoami ;;
-3) df -h | grep -v tmpfs ;;
+3) df -h | grep -v tmpfs  ;;
 4) clear;exit 0 ;;
 *) echo "Invalid choice" ;;
 esac
