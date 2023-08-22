@@ -16,13 +16,13 @@ echo
 echo "UTILITY MENU"
 echo "------------"
 echo
-echo "1 - Show IP Information"
+echo "1 - IP Information"
 echo
-echo "2 - Show currently logged in user"
+echo "2 - Currently logged in user"
 echo
-echo "3 - Show disk usage"
+echo "3 - Disk usage"
 echo
-echo "4 - Show tmpfs usage"
+echo "4 - tmpfs usage"
 echo
 echo "5 - Quit"
 echo
