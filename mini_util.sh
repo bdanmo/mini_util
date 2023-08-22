@@ -22,7 +22,9 @@ echo "2 - Show currently logged in user"
 echo
 echo "3 - Show disk usage"
 echo
-echo "4 - Quit"
+echo "4 - Show tmpfs usage"
+echo
+echo "5 - Quit"
 echo
 echo "Enter your choice: "
 echo
@@ -32,7 +34,8 @@ case $choice in
 1) show_ipinfo ;;
 2) whoami ;;
 3) df -h | grep -v tmpfs  ;;
-4) clear;exit 0 ;;
+4) df -h | grep tmpfs ;;
+5) clear;exit 0 ;;
 *) echo "Invalid choice" ;;
 esac
 echo
