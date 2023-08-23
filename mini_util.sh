@@ -40,6 +40,6 @@ while true; do
     *) echo "Invalid choice" ;;      
     esac
     echo
-    echo -n "Press enter to make another selection"
+    echo -n "Press any key to continue"
     read -n 1
 done
