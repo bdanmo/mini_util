@@ -1,12 +1,14 @@
 #!/bin/bash
 function show_ipinfo() {
-    #create var, ip_var, to show the ip address of the active interface. i.e., inet field is present -- exclude loopback (lo)
-    ip_var=$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}')
+    #create var, ip_var, to show the ip address of the active interface, put on one line separated by commas and spaces
+    ip_var=$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | awk 'BEGIN{ORS=", "}{print}' | sed 's/, $//')
     #create var, dgw_var, to show default gateway of this same interface
     dgw_var=$(ip route show | grep 'default' | awk '{print $3}')
+    #get dns servers from nmcli, remove repeated lines, and put on one line separated by commas and spaces
+    dns_var=$(nmcli dev show | grep DNS | awk '{print $2}' | sort | uniq | awk 'BEGIN{ORS=", "}{print}' | sed 's/, $//')
     echo "IP Address: $ip_var"
     echo "Default Gateway: $dgw_var"
-    cat /etc/resolv.conf | grep "nameserver" | grep -v "#"
+    echo "DNS Servers: $dns_var"
 }
 
 while true; do
@@ -25,10 +27,7 @@ while true; do
     echo
     echo "5 - Quit"
     echo
-    echo "Enter your choice: "
-    echo
-    read choice
-    echo
+    read -s -n 1 choice
     case $choice in
     1) show_ipinfo ;;
     2) df -h | grep -v tmpfs ;;
@@ -38,9 +37,9 @@ while true; do
         clear
         exit 0
         ;;
-    *) echo "Invalid choice" ;;
+    *) echo "Invalid choice" ;;      
     esac
     echo
-    echo "Press Enter to make another selection"
-    read junk
+    echo -n "Press enter to make another selection"
+    read -n 1
 done
